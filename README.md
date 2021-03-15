@@ -5,4 +5,4 @@ Sample Application to understand the basic concepts of containers, gateways, ser
 
 ## Getting Started
 
-Make sure you have [installed](https://docs.docker.com/docker-for-windows/install/)
+Make sure you have Docker [installed](https://docs.docker.com/docker-for-windows/install/)
