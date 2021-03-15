@@ -1,0 +1,269 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/CatlogServices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "statuscatlogservice",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/OrderServices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "statusorderservice",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/AdminServices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "statusadminservice",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceProvider",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/ProviderServices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "statusproviderservice",
+      "ServiceName": "SERVICEPROVIDER",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Notification",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/notifications",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "notifications",
+      "ServiceName": "NOTIFICATIONSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog/services",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/catlog/allservices",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "servicecatlog",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog/Regions",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/catlog/allregions",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "serviceregions",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog/{serviceID}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/catlog/service/{serviceID}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "servicebyid",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog/Region/{regionID}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/catlog/service/region/{regionID}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "servicebyregionid",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceCatlog/Search/{regionID}/{serviceID}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/catlog/{regionID}/{serviceID}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "servicesearch",
+      "ServiceName": "SERVICESCATLOG",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/GetService/{regionID}/{serviceID}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Orders/find/{regionID}/{serviceID}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "servicefind",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/MyOrders/{userId}/{authenticationToken}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/MyOrders/{userId}/{authenticationToken}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "myorders",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/Orderstatus/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Orders/TrackOrder/{orderId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "trackorder",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/BookService/{regionID}/{serviceID}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Orders/Book/{regionID}/{serviceID}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "trackorder",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Orders/Cancel/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Orders/cancelOrder/{orderId}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "Key": "cancelorder",
+      "ServiceName": "SERVICEREQUEST",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin/ServiceRequests/GetNewRequests",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Admin/NewServiceRequests",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "getallnewservices",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin/ServiceRequests/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Admin/GetServiceByServiceId/{orderId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "getservicebyservieid",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin/UpdateRequestState/{orderId}/{statusId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/ServiceRequest/UpdateState/{orderId}/{statusId}",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "updateorderstate",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin/GetAvailableProviders/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Admin/GetProviders/{orderId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "getserviceprovider",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Admin/AssignOrderToProvider/{orderId}/{providerId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Admin/Assignticket/{orderId}/{providerId}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "Key": "assignticket",
+      "ServiceName": "ADMINSERVICES",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceProvider/GetAllTickets",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Services/GetAllTickets",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "getalltickets",
+      "ServiceName": "SERVICEPROVIDER",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceProvider/AcceptService/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Services/Accept/{orderId}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "Key": "acceptrequest",
+      "ServiceName": "SERVICEPROVIDER",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ServiceProvider/RejectService/{orderId}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/api/Services/Reject/{orderId}",
+      "UpstreamHttpMethod": [ "Put" ],
+      "Key": "rejectrequest",
+      "ServiceName": "SERVICEPROVIDER",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      "Host": "eureka",
+      "Port": "8761"
+    },
+    //"BaseUrl": "http://localhost:62583"
+  }
+}

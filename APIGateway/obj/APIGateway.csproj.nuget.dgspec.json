@@ -1,0 +1,96 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\NAGP2021\\Assignments\\NagpAssignment_one\\UrbanClap_Microservice\\APIGateway\\APIGateway.csproj": {}
+  },
+  "projects": {
+    "D:\\NAGP2021\\Assignments\\NagpAssignment_one\\UrbanClap_Microservice\\APIGateway\\APIGateway.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\NAGP2021\\Assignments\\NagpAssignment_one\\UrbanClap_Microservice\\APIGateway\\APIGateway.csproj",
+        "projectName": "APIGateway",
+        "projectPath": "D:\\NAGP2021\\Assignments\\NagpAssignment_one\\UrbanClap_Microservice\\APIGateway\\APIGateway.csproj",
+        "packagesPath": "C:\\Users\\prasunguchhait\\.nuget\\packages\\",
+        "outputPath": "D:\\NAGP2021\\Assignments\\NagpAssignment_one\\UrbanClap_Microservice\\APIGateway\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\prasunguchhait\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.9.10, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Ocelot": {
+              "target": "Package",
+              "version": "[16.0.0, )"
+            },
+            "Ocelot.Administration": {
+              "target": "Package",
+              "version": "[16.0.0, )"
+            },
+            "Ocelot.Provider.Eureka": {
+              "target": "Package",
+              "version": "[16.0.0, )"
+            },
+            "Ocelot.Provider.Polly": {
+              "target": "Package",
+              "version": "[16.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.108\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
