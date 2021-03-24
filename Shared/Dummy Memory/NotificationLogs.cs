@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Shared
 {
+    ///Notification Class 
     public class NotificationLogs
     {
         public string ServiceName { get; set; }

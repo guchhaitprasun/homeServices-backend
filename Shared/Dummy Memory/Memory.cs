@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Shared
 {
     /// <summary>
-    /// Static Memory act as a In Memory for this Application 
+    /// Static Memory act as a In Memory Data (Temp data) for this Application 
     /// Used to fetch and store dummy
     /// Author: Prasun Guchhait 
     /// </summary>
