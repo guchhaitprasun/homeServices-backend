@@ -1,0 +1,160 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management 
+    ports: 
+        - "15672:15672"
+        - "5672:5672"  
+    networks:
+      - my_network
+    container_name: "rabbitmq"
+    hostname: "my-rabbit"
+
+  eureka:
+    image: steeltoeoss/eurekaserver
+    container_name: "eurekaServiceProvider"
+    ports:
+      - "8761:8761"
+    networks:
+      - my_network
+    container_name: eureka
+
+  apigateway:
+    image: prasunguchhait/apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    depends_on:
+      - "eureka"
+      - "rabbitmq"
+    ports:
+      - "0.0.0.0:9000:80"
+    networks:
+      - my_network
+    container_name: Gateway
+
+  jaeger-agent:
+    image: jaegertracing/all-in-one:latest
+    networks:
+        - my_network
+    ports:
+        - "5775:5775/udp"
+        - "6831:6831/udp"
+        - "6832:6832/udp"
+        - "5778:5778/tcp"
+        - "16686:16686"
+        - "14268:14268"
+        - "9411:9411"
+    environment:
+        - LOG_LEVEL=debug
+    labels:
+        NAME: "jaeger-agent"
+    container_name: 'tracing.jaeger.agent'
+
+  servicescatlog:
+    image: prasunguchhait/servicescatlog
+    build:
+      context: .
+      dockerfile: ServicesCatlog/Dockerfile
+    depends_on:
+      - "eureka"
+      - "rabbitmq"
+      - "jaeger-agent"
+    networks:
+      - my_network
+    container_name: servicescatlog
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JAEGER_SERVICE_NAME=ServiceCatlogAPI
+      - JAEGER_AGENT_HOST=jaeger-agent
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+
+  servicerequest:
+    image: prasunguchhait/servicerequest
+    build:
+      context: .
+      dockerfile: ServiceRequest/Dockerfile
+    depends_on:
+      - "eureka"
+      - "rabbitmq"
+      - "jaeger-agent"
+    networks:
+      - my_network
+    container_name: servicerequest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JAEGER_SERVICE_NAME=ServiceRequestAPI
+      - JAEGER_AGENT_HOST=jaeger-agent
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+
+  adminservices:
+    image: prasunguchhait/adminservices
+    build:
+      context: .
+      dockerfile: AdminServices/Dockerfile
+    depends_on:
+        - "eureka"
+        - "rabbitmq"
+        - "jaeger-agent"
+    networks:
+      - my_network
+    container_name: adminservice
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JAEGER_SERVICE_NAME=AdminServiceAPI
+      - JAEGER_AGENT_HOST=jaeger-agent
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+
+  serviceprovider:
+    image: prasunguchhait/serviceprovider
+    build:
+      context: .
+      dockerfile: ServiceProvider/Dockerfile
+    depends_on:
+        - "eureka"
+        - "rabbitmq"
+        - "jaeger-agent"
+    networks:
+      - my_network
+    container_name: serviceprovider
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JAEGER_SERVICE_NAME=ServiceProviderAPI
+      - JAEGER_AGENT_HOST=jaeger-agent
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+
+  notificationservices:
+    image: prasunguchhait/notificationservices
+    build:
+      context: .
+      dockerfile: NotificationServices/Dockerfile
+    depends_on:
+        - "eureka"
+        - "rabbitmq"
+        - "jaeger-agent"
+    networks:
+      - my_network
+    container_name: notificationlogs
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JAEGER_SERVICE_NAME=NotificationServiceAPI
+      - JAEGER_AGENT_HOST=jaeger-agent
+      - JAEGER_AGENT_PORT=6831
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+
+networks:
+  my_network:
+    external: true
+
+
+
